@@ -76,7 +76,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@expressots/core": "^1.9.1",
+    "@expressots/core": "^2.1.0",
     "@release-it/conventional-changelog": "^7.0.1",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.4.9",
