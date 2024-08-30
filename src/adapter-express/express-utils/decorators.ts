@@ -505,12 +505,26 @@ export function FileUpload(
       const res = args[1] as Response;
       // const next = args[2] as NextFunction;
 
-      const multerMiddleware: RequestHandler = getMulterMiddleware(upload, options, method);
-      multerMiddleware(req, res, (err: any) => {
-        if (err) {
-          return res.status(400).json({ error: err.message });
+      return new Promise((resolve, reject) => {
+        try {
+          const multerMiddleware: RequestHandler = getMulterMiddleware(upload, options, method);
+
+          multerMiddleware(req, res, (err: any) => {
+            if (err) {
+              res.status(400).json({ error: err.message });
+              return reject(err);
+            }
+
+            try {
+              const result = originalMethod.apply(this, args);
+              resolve(result); // Resolve the promise with the result
+            } catch (error) {
+              reject(error);
+            }
+          });
+        } catch (error) {
+          reject(error);
         }
-        return originalMethod.apply(this, args);
       });
     };
   };
