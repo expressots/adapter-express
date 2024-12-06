@@ -62,7 +62,7 @@
     "lint:fix": "eslint \"src/**/*.ts\" --fix"
   },
   "dependencies": {
-    "express": "4.21.1",
+    "express": "4.21.2",
     "reflect-metadata": "0.2.2"
   },
   "devDependencies": {
